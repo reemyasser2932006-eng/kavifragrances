@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search | KAVI</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .search-page {
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .search-page h1 {
+            font-size: 42px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .search-page p.subtitle {
+            color: #777;
+            margin-bottom: 35px;
+        }
+
+        .search-box {
+            max-width: 650px;
+            margin: 0 auto 60px;
+            display: flex;
+            border-bottom: 1px solid #222;
+            padding: 8px 0;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 17px;
+            padding: 12px 5px;
+            background: transparent;
+        }
+
+        .search-box button {
+            border: none;
+            background: #4B164C;
+            color: rgb(255, 255, 255);
+            padding: 12px 28px;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .search-box button:hover {
+            background: #333;
+        }
+
+        .search-results {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+
+        .search-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    background: #fafafa;
+    padding-bottom: 20px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+        .search-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .search-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .search-card-info {
+            padding: 15px;
+        }
+
+        .search-card-info small {
+            color: #888;
+            letter-spacing: 1px;
+        }
+
+        .search-card-info h3 {
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        .search-card-info p {
+            margin-bottom: 15px;
+        }
+
+        
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #777;
+            font-size: 18px;
+            padding: 50px;
+        }
+
+        @media (max-width: 900px) {
+            .search-results {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .search-results {
+                grid-template-columns: 1fr;
+            }
+
+            .search-page h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">KAVI</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="icons">
+
+    <span onclick="window.location.href='search.html'">
+        ⌕
+    </span>
+
+    <span class="cart-icon" onclick="window.location.href='cart.html'">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+
+            <path d="M3 4H5L7 16H19L21 8H6"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+
+            <circle cx="9" cy="20" r="1.2" fill="currentColor"/>
+            <circle cx="17" cy="20" r="1.2" fill="currentColor"/>
+
+        </svg>
+
+        <span id="cart-count">0</span>
+
+    </span>
+
+</div>
+
+</header>
+
+
+<section class="search-page">
+
+    <h1>Find Your Fragrance</h1>
+
+    <p class="subtitle">
+        Discover your favorite scent from KAVI
+    </p>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search fragrance..."
+            oninput="searchProducts()"
+        >
+
+        <button onclick="searchProducts()">
+            SEARCH
+        </button>
+
+    </div>
+
+
+    <div id="search-results" class="search-results"></div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+<script>
+
+function searchProducts() {
+
+    let search = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    let results = document.getElementById("search-results");
+
+    let products = [
+
+        {
+            name: "Lady Rose",
+            price: 410,
+            image: "image/p1.jpg",
+            link: "product.html"
+        },
+
+        {
+            name: "Dilara",
+            price: 430,
+            image: "image/p2.jpg",
+            link: "product2.html"
+        },
+
+        {
+            name: "Vanilla Sucree",
+            price: 460,
+            image: "image/p3.jpg",
+            link: "product3.html"
+        },
+
+        {
+            name: "Berry Bloom",
+            price: 395,
+            image: "image/p4.jpg",
+            link: "product4.html"
+        }
+
+    ];
+
+
+    let filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(search)
+    );
+
+
+    results.innerHTML = "";
+
+
+    if (filteredProducts.length === 0) {
+
+        results.innerHTML = `
+            <div class="no-results">
+                No fragrance found.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    filteredProducts.forEach(product => {
+
+        results.innerHTML += `
+
+            <a href="${product.link}" class="search-card">
+
+    <img src="${product.image}" alt="${product.name}">
+
+    <div class="search-card-info">
+
+        <small>KAVI FRAGRANCE</small>
+
+        <h3>${product.name}</h3>
+
+        <p>LE ${product.price}.00</p>
+
+    </div>
+
+</a>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

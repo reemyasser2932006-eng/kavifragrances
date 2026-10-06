@@ -1,0 +1,700 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | KAVI</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .checkout-page {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 25px;
+        }
+
+        .checkout-page h1 {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1.3fr 0.8fr;
+            gap: 50px;
+        }
+
+        .checkout-section {
+            margin-bottom: 35px;
+        }
+
+        .checkout-section h2 {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .checkout-section h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .checkout-section input,
+        .checkout-section select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 18px;
+        }
+
+        .checkout-section input:focus,
+        .checkout-section select:focus {
+            border-color: #4B164C;
+        }
+
+        .name-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .order-summary {
+            background: #fafafa;
+            padding: 25px;
+            height: fit-content;
+        }
+
+        .order-summary h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .checkout-product {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .checkout-product img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+        }
+
+        .checkout-product-info {
+            flex: 1;
+        }
+
+        .checkout-product-info h3 {
+            margin: 0 0 5px;
+            font-size: 15px;
+        }
+
+        .checkout-product-info p {
+            margin: 4px 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .place-order {
+            width: 100%;
+            margin-top: 25px;
+            padding: 15px;
+            border: none;
+            background: #4B164C;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .place-order:hover {
+            background: #682268;
+        }
+
+        @media (max-width: 800px) {
+
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .name-fields {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="logo">KAVI</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <div class="icons">
+
+    <span onclick="window.location.href='search.html'">
+        ⌕
+    </span>
+
+    <span class="cart-icon" onclick="window.location.href='cart.html'">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+
+            <path d="M3 4H5L7 16H19L21 8H6"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+
+            <circle cx="9" cy="20" r="1.2" fill="currentColor"/>
+            <circle cx="17" cy="20" r="1.2" fill="currentColor"/>
+
+        </svg>
+
+        <span id="cart-count">0</span>
+
+    </span>
+
+</div>
+
+</header>
+
+
+<section class="checkout-page">
+
+    <h1>Checkout</h1>
+
+    <div class="checkout-container">
+
+        <!-- CUSTOMER INFORMATION -->
+
+        <div>
+
+            <div class="checkout-section">
+
+                <h2>Contact Information</h2>
+
+                <h3>Phone Number</h3>
+
+                <input
+                    type="tel"
+                    id="contactPhone"
+                    placeholder="Phone number"
+                >
+
+            </div>
+
+
+            <!-- DELIVERY INFORMATION -->
+
+            <div class="checkout-section">
+
+                <h2>Delivery</h2>
+
+                <h3>Country</h3>
+
+                <select id="country">
+
+                    <option value="Egypt">Egypt</option>
+
+                </select>
+
+
+                <div class="name-fields">
+
+                    <div>
+
+                        <h3>First Name</h3>
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            placeholder="First name"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>Last Name</h3>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            placeholder="Last name"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <h3>Address</h3>
+
+                <input
+                    type="text"
+                    id="address"
+                    placeholder="Address"
+                >
+
+
+                <h3>City</h3>
+
+                <input
+                    type="text"
+                    id="city"
+                    placeholder="City"
+                >
+
+
+                <h3>Governorate</h3>
+
+                <select id="governorate">
+
+                    <option value="">Select Governorate</option>
+
+                    <option>Cairo</option>
+                    <option>Alexandria</option>
+                    <option>Port Said</option>
+                    <option>Suez</option>
+                    <option>Damietta</option>
+                    <option>Dakahlia</option>
+                    <option>Sharkia</option>
+                    <option>Qalyubia</option>
+                    <option>Kafr El Sheikh</option>
+                    <option>Gharbia</option>
+                    <option>Menoufia</option>
+                    <option>Beheira</option>
+                    <option>Ismailia</option>
+                    <option>Giza</option>
+                    <option>Beni Suef</option>
+                    <option>Fayoum</option>
+                    <option>Minya</option>
+                    <option>Assiut</option>
+                    <option>Sohag</option>
+                    <option>Qena</option>
+                    <option>Luxor</option>
+                    <option>Aswan</option>
+                    <option>Red Sea</option>
+                    <option>New Valley</option>
+                    <option>Matrouh</option>
+                    <option>North Sinai</option>
+                    <option>South Sinai</option>
+
+                </select>
+
+
+                <h3>Phone</h3>
+
+                <input
+                    type="tel"
+                    id="deliveryPhone"
+                    placeholder="Phone"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- ORDER -->
+
+        <div class="order-summary">
+
+            <h2>Order</h2>
+
+            <div id="checkout-products"></div>
+
+
+            <div class="price-row">
+
+                <span>Delivery</span>
+
+                <span id="delivery-cost">LE 80.00</span>
+
+            </div>
+
+
+            <div class="total-row">
+
+                <span>Total</span>
+
+                <span id="checkout-total">LE 0.00</span>
+
+            </div>
+
+
+            <button class="place-order" onclick="placeOrder()">
+                Place Order
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* =========================================
+   DELIVERY SETTINGS
+========================================= */
+
+const highDeliveryGovernorates = [
+    "Fayoum",
+    "Beni Suef",
+    "Minya",
+    "Assiut",
+    "Sohag",
+    "Qena",
+    "Luxor",
+    "Aswan",
+    "New Valley",
+    "Red Sea",
+    "North Sinai",
+    "South Sinai",
+    "Matrouh"
+];
+
+
+/* =========================================
+   GET DELIVERY PRICE
+========================================= */
+
+function getDeliveryPrice(governorate) {
+
+    if (highDeliveryGovernorates.includes(governorate)) {
+        return 110;
+    }
+
+    return 80;
+}
+
+
+/* =========================================
+   DISPLAY CHECKOUT
+========================================= */
+
+function displayCheckout() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let productsContainer =
+        document.getElementById("checkout-products");
+
+    let totalElement =
+        document.getElementById("checkout-total");
+
+    let deliveryElement =
+        document.getElementById("delivery-cost");
+
+    let governorate =
+        document.getElementById("governorate").value;
+
+
+    productsContainer.innerHTML = "";
+
+    let subtotal = 0;
+
+
+    cart.forEach(product => {
+
+        let itemTotal =
+            product.price * product.quantity;
+
+        subtotal += itemTotal;
+
+
+        productsContainer.innerHTML += `
+
+            <div class="checkout-product">
+
+                <img src="${product.image}" alt="${product.name}">
+
+                <div class="checkout-product-info">
+
+                    <h3>${product.name}</h3>
+
+                    <p>Size: ${product.size || "50 ml"}</p>
+
+                    <p>Quantity: ${product.quantity}</p>
+
+                    <p>LE ${itemTotal.toFixed(2)}</p>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    /* Calculate delivery */
+
+    let delivery =
+        getDeliveryPrice(governorate);
+
+
+    /* Display delivery price */
+
+    deliveryElement.textContent =
+        "LE " + delivery.toFixed(2);
+
+
+    /* Calculate final total */
+
+    let finalTotal =
+        subtotal + delivery;
+
+
+    totalElement.textContent =
+        "LE " + finalTotal.toFixed(2);
+
+}
+
+
+/* =========================================
+   CHANGE DELIVERY WHEN GOVERNORATE CHANGES
+========================================= */
+
+document
+    .getElementById("governorate")
+    .addEventListener("change", function () {
+
+        displayCheckout();
+
+    });
+
+
+/* =========================================
+   INITIAL CHECKOUT
+========================================= */
+
+displayCheckout();
+
+
+/* =========================================
+   PLACE ORDER
+========================================= */
+
+function placeOrder() {
+
+    let firstName =
+        document.getElementById("firstName").value.trim();
+
+    let lastName =
+        document.getElementById("lastName").value.trim();
+
+    let address =
+        document.getElementById("address").value.trim();
+
+    let city =
+        document.getElementById("city").value.trim();
+
+    let governorate =
+        document.getElementById("governorate").value;
+
+    let phone =
+        document.getElementById("deliveryPhone").value.trim();
+
+
+    /* Check required information */
+
+    if (
+        !firstName ||
+        !lastName ||
+        !address ||
+        !city ||
+        !governorate ||
+        !phone
+    ) {
+
+        alert("Please fill in all delivery information.");
+
+        return;
+
+    }
+
+
+    /* Get cart */
+
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
+
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty.");
+
+        return;
+
+    }
+
+
+    /* Get correct delivery price */
+
+    let delivery =
+        getDeliveryPrice(governorate);
+
+
+    let subtotal = 0;
+
+
+    /* WhatsApp order message */
+
+    let orderText =
+        "KAVI NEW ORDER\n\n";
+
+
+    orderText +=
+        "CUSTOMER INFORMATION\n";
+
+    orderText +=
+        "Name: " +
+        firstName +
+        " " +
+        lastName +
+        "\n";
+
+    orderText +=
+        "Phone: " +
+        phone +
+        "\n";
+
+    orderText +=
+        "Address: " +
+        address +
+        "\n";
+
+    orderText +=
+        "City: " +
+        city +
+        "\n";
+
+    orderText +=
+        "Governorate: " +
+        governorate +
+        "\n\n";
+
+
+    orderText +=
+        "ORDER\n";
+
+
+    /* Products */
+
+    cart.forEach(product => {
+
+        let itemTotal =
+            product.price *
+            product.quantity;
+
+
+        subtotal +=
+            itemTotal;
+
+
+        orderText +=
+            product.name +
+            " | " +
+            (product.size || "50 ml") +
+            " | Qty: " +
+            product.quantity +
+            " | LE " +
+            itemTotal.toFixed(2) +
+            "\n";
+
+    });
+
+
+    /* Final total */
+
+    let total =
+        subtotal + delivery;
+
+
+    orderText +=
+        "\nSubtotal: LE " +
+        subtotal.toFixed(2);
+
+
+    orderText +=
+        "\nDelivery: LE " +
+        delivery.toFixed(2);
+
+
+    orderText +=
+        "\nTOTAL: LE " +
+        total.toFixed(2);
+
+
+    /* WhatsApp */
+
+    let whatsappNumber =
+        "201066765218";
+
+
+    let whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(orderText);
+
+
+    window.location.href =
+        whatsappURL;
+
+}
+
+</script>
+
+</body>
+</html>
+```

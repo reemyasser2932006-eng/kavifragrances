@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product | Kavi Fragrances</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* Product Images */
+
+        .product-image {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            max-width: 550px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .image-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+
+            font-size: 28px;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 2;
+        }
+
+        .image-arrow:hover {
+            background: #4B164C;
+            color: white;
+        }
+
+        .prev-arrow {
+            left: 15px;
+        }
+
+        .next-arrow {
+            right: 15px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">KAVI</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html">Shop</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+
+       <div class="icons">
+
+    <span onclick="window.location.href='search.html'">
+        ⌕
+    </span>
+
+    <span class="cart-icon" onclick="window.location.href='cart.html'">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+
+            <path d="M3 4H5L7 16H19L21 8H6"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+
+            <circle cx="9" cy="20" r="1.2" fill="currentColor"/>
+            <circle cx="17" cy="20" r="1.2" fill="currentColor"/>
+
+        </svg>
+
+        <span id="cart-count">0</span>
+
+    </span>
+
+</div>
+
+    </header>
+
+
+    <section class="product-details">
+
+
+        <!-- PRODUCT IMAGES -->
+
+        <div class="product-image">
+
+            <button
+                type="button"
+                class="image-arrow prev-arrow"
+                onclick="previousImage()">
+                ‹
+            </button>
+
+
+            <img
+                id="productImage"
+                src="image/p3.jpg"
+                alt="Vanilla Sucree">
+
+
+            <button
+                type="button"
+                class="image-arrow next-arrow"
+                onclick="nextImage()">
+                ›
+            </button>
+
+        </div>
+
+
+        <!-- PRODUCT INFORMATION -->
+
+        <div class="product-info">
+
+            <p class="product-category">
+                FOR HER
+            </p>
+
+
+            <h1>
+                Vanilla Sucree
+            </h1>
+
+
+            <p class="product-price">
+                LE 460.00
+            </p>
+
+
+            <p class="product-description">
+                A delicious blend of juicy strawberry and pink lady apple, fluffy marshmallow, creamy coconut, and a warm vanilla whipped-cream base.
+            </p>
+
+
+            <!-- SIZE -->
+
+            <div class="size">
+
+                <h3>
+                    Size
+                </h3>
+
+
+                <button
+                    type="button"
+                    class="size-btn"
+                    onclick="selectSize(this, 460)">
+
+                    50 ml
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="size-btn"
+                    onclick="selectSize(this, 48)">
+
+                    3 ml
+
+                </button>
+
+            </div>
+
+
+            <!-- QUANTITY -->
+
+            <div class="quantity">
+
+                <h3>
+                    Quantity
+                </h3>
+
+
+                <button
+                    type="button"
+                    onclick="decreaseQuantity()">
+
+                    -
+
+                </button>
+
+
+                <span id="quantity">
+                    1
+                </span>
+
+
+                <button
+                    type="button"
+                    onclick="increaseQuantity()">
+
+                    +
+
+                </button>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="product-buttons">
+
+                <button
+                    onclick="addToCart(
+                        'Vanilla Sucree',
+                        460,
+                        'image/p3.jpg',
+                        productQuantity
+                    )">
+
+                    Add to Cart
+
+                </button>
+
+
+                <button
+                    onclick="buyNow(
+                        'Vanilla Sucree',
+                        460,
+                        'image/p3.jpg'
+                    )">
+
+                    Buy Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        /* =====================================
+           PRODUCT IMAGES
+        ===================================== */
+
+        const productImages = [
+            "image/p3.jpg",
+            "image/p33.jpg"
+        ];
+
+
+        let currentImage = 0;
+
+
+        /* =====================================
+           SHOW IMAGE
+        ===================================== */
+
+        function showImage() {
+
+            document.getElementById("productImage").src =
+                productImages[currentImage];
+
+        }
+
+
+        /* =====================================
+           NEXT IMAGE
+        ===================================== */
+
+        function nextImage() {
+
+            currentImage++;
+
+            if (currentImage >= productImages.length) {
+                currentImage = 0;
+            }
+
+            showImage();
+
+        }
+
+
+        /* =====================================
+           PREVIOUS IMAGE
+        ===================================== */
+
+        function previousImage() {
+
+            currentImage--;
+
+            if (currentImage < 0) {
+                currentImage = productImages.length - 1;
+            }
+
+            showImage();
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```
