@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+        #productImage {
+    transition: opacity 0.4s ease-in-out;
+}
 
         /* Product Images */
 
@@ -288,13 +291,20 @@
            SHOW IMAGE
         ===================================== */
 
-        function showImage() {
+       function showImage() {
 
-            document.getElementById("productImage").src =
-                productImages[currentImage];
+    const image = document.getElementById("productImage");
 
-        }
+    image.style.opacity = "0";
 
+    setTimeout(function () {
+
+        image.src = productImages[currentImage];
+
+        image.style.opacity = "1";
+
+    }, 400);
+}
 
         /* =====================================
            NEXT IMAGE
@@ -328,6 +338,7 @@
             showImage();
 
         }
+        setInterval(nextImage,2000);
 
     </script>
 
