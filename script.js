@@ -2,11 +2,11 @@
 // CART
 // ===============================
 
-function addToCart(name, price, image, quantity = 1) {
+function addToCart(name, price, image, quantity = 1, productSize = "50 ml")  {
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    let size = selectedSize || "50 ml";
+    let size = productSize;
     let finalPrice = selectedPrice || price;
 
     // Make sure quantity is a number
@@ -262,10 +262,8 @@ function selectSize(button, price) {
 // BUY NOW
 // ===============================
 
-function buyNow(name, price, image) {
-
-    let size = selectedSize || "50 ml";
-
+function buyNow(name, price, image, productSize = "50 ml") {
+    let size = selectedSize || productSize;
     let finalPrice = selectedPrice || price;
 
     let cart = [{
@@ -280,7 +278,6 @@ function buyNow(name, price, image) {
 
     window.location.href = "checkout.html";
 }
-
 
 // ===============================
 // PAGE LOAD

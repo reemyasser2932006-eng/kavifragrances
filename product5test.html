@@ -12,7 +12,7 @@
 
     <style>
         #productImage {
-    transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
         /* PRODUCT IMAGES */
@@ -221,33 +221,32 @@
 
         <!-- BUTTONS -->
 
-        <div class="product-buttons">
+       <div class="product-buttons">
 
+    <button
+        type="button"
+        onclick="addToCart(
+            'KAVI Scent Collection',
+            175,
+            'image/test1.jpg',
+            productQuantity,
+            '3 ml'
+        )">
+        Add to Cart
+    </button>
 
-            <button
-                onclick="addToCart(
-                    'KAVI Scent Collection',
-                    175,
-                    'image/test1.jpg',
-                    productQuantity
-                )">
+    <button
+        type="button"
+        onclick="buyNow(
+            'KAVI Scent Collection',
+            175,
+            'image/test1.jpg',
+            '3 ml'
+        )">
+        Buy Now
+    </button>
 
-                Add to Cart
-
-            </button>
-
-
-
-            <button
-                onclick="buyNow(
-                    'KAVI Scent Collection',
-                    175,
-                    'image/test1.jpg'
-                )">
-
-                Buy Now
-
-            </button>
+</div>
 
 
         </div>
@@ -291,7 +290,7 @@
 
         image.style.opacity = "1";
 
-    }, 400);
+    }, 500);
 }
 
 
@@ -328,7 +327,7 @@
         showImage();
 
     }
-    setInterval(nextImage, 2000);
+    setInterval(nextImage, 5000);
 
 </script>
 
