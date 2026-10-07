@@ -529,3 +529,352 @@ nav a {
     align-items: center;
     justify-content: center;
 }
+/* MOBILE PRODUCT PAGE FIX */
+
+@media (max-width: 768px) {
+
+    .product-details {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+    }
+
+    .product-image {
+        width: 100%;
+        min-height: 350px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-image img {
+        width: 100%;
+        max-width: 100%;
+        height: 350px;
+        object-fit: contain;
+    }
+
+    .product-info {
+        width: 100%;
+        padding: 20px 10px;
+    }
+
+    .product-info h1 {
+        font-size: 36px;
+    }
+
+    .product-description {
+        font-size: 16px;
+    }
+
+    .size-btn {
+        padding: 12px 25px;
+    }
+
+    .quantity {
+        margin-top: 25px;
+    }
+
+    .product-buttons {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .product-buttons button {
+        flex: 1;
+        padding: 14px 10px;
+        margin-right: 0;
+        font-size: 14px;
+    }
+
+    .image-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 24px;
+    }
+
+    .prev-arrow {
+        left: 5px;
+    }
+
+    .next-arrow {
+        right: 5px;
+    }
+
+}
+/* MOBILE CART FIX */
+
+@media (max-width: 768px) {
+
+    .cart {
+        padding: 30px 15px;
+    }
+
+    .cart h1 {
+        font-size: 32px;
+        margin-bottom: 25px;
+    }
+
+    .cart-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    .cart-item img {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+        margin: 0 auto 20px;
+    }
+
+    .cart-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .cart-info h2 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .cart-info p {
+        font-size: 15px;
+        margin: 8px 0;
+    }
+
+    .cart-info .quantity {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin: 15px 0;
+    }
+
+    .cart-info .quantity button {
+        width: 38px;
+        height: 38px;
+        padding: 0;
+    }
+
+    .cart-info > button {
+        padding: 10px 20px;
+        margin-top: 10px;
+    }
+
+    .cart-total {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        padding: 20px 10px;
+    }
+
+    .cart-total h2 {
+        font-size: 22px;
+    }
+
+    .cart-total a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 14px;
+        margin-top: 15px;
+    }
+
+}
+/* =================================
+   KAVI - LUXURY PURPLE THEME
+   ================================= */
+
+body {
+    background: #ffffff;
+    color: #4B164C;
+}
+
+/* HEADER */
+
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #eee6f2;
+}
+
+.logo {
+    color: #8968b1;
+}
+
+nav a {
+    color: #7B5A91;
+}
+
+nav a:hover {
+    color: #4B164C;
+}
+
+/* ICONS */
+
+.icons span {
+    color: #8B6AA3;
+}
+
+.icons span:hover {
+    color: #4B164C;
+}
+
+.cart-icon {
+    color: #8B6AA3;
+}
+
+.cart-icon:hover {
+    color: #4B164C;
+}
+
+#cart-count {
+    background: #4B164C;
+    color: white;
+}
+
+/* HOME HERO */
+
+.hero {
+    background-color: #ffffff;
+    color: #4B164C;
+}
+
+/* HEADINGS */
+
+h1,
+h2,
+h3 {
+    color: #4B164C;
+}
+
+/* PRODUCT CARDS */
+
+.product-card {
+    background: #ffffff;
+    color: #4B164C;
+}
+
+.product-card p {
+    color: #8B6AA3;
+}
+
+.product-card h3 {
+    color: #4B164C;
+}
+
+.product-card:hover {
+    box-shadow: 0 8px 25px rgba(75, 22, 76, 0.10);
+}
+
+/* PRODUCT PAGE */
+
+.product-details {
+    background: #ffffff;
+}
+
+.product-category {
+    color: #9B7EAD;
+}
+
+.product-price {
+    color: #4B164C;
+}
+
+.product-description {
+    color: #6F6275;
+}
+
+/* SIZE BUTTONS */
+
+.size-btn {
+    background: #ffffff;
+    color: #6F4A8E;
+    border: 1px solid #BDA8CC;
+}
+
+.size-btn:hover,
+.size-btn.selected {
+    background: #8B6AA3;
+    color: white;
+    border-color: #8B6AA3;
+}
+
+/* QUANTITY */
+
+.quantity button {
+    background: #ffffff;
+    color: #6F4A8E;
+    border: 1px solid #D2C3DB;
+}
+
+.quantity button:hover {
+    background: #8B6AA3;
+    color: white;
+}
+
+/* ADD TO CART + BUY NOW */
+
+.product-buttons button {
+    background: linear-gradient(
+        135deg,
+        #B99AC9,
+        #6F4A8E
+    );
+
+    color: white;
+    border: none;
+}
+
+.product-buttons button:hover {
+    background: linear-gradient(
+        135deg,
+        #6F4A8E,
+        #4B164C
+    );
+}
+
+/* CART */
+
+.cart {
+    background: #ffffff;
+}
+
+.cart-item {
+    background: #ffffff;
+    border: 1px solid #eee6f2;
+}
+
+.cart-info h2 {
+    color: #4B164C;
+}
+
+.cart-info p {
+    color: #6F6275;
+}
+
+.cart-total {
+    color: #4B164C;
+}
+
+.cart-total a {
+    background: #8B6AA3;
+    color: white;
+}
+
+.cart-total a:hover {
+    background: #4B164C;
+}
+
+/* BEST SELLER */
+
+.best-seller {
+    background: #6F4A8E;
+    color: white;
+}
